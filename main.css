@@ -1,3 +1,6 @@
-hr{
+hr {
     border-top: 1px solid white;
+}
+span {
+	vertical-align: top;
 }
