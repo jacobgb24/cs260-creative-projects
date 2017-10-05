@@ -1,0 +1,6 @@
+.card-columns {
+    column-count: 4;
+}
+hr{
+    border-top: 1px solid red;
+}
