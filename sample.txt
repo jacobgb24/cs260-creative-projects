@@ -1,0 +1,25 @@
+/* Below is some sample code. Feel free to change it.
+ * The code looks for spaces around operators ( + - != << etc.)
+ * As well as opening braces not using K&R
+ * I'm sure you'll find plenty of bugs.
+*/
+
+int main()
+{
+   int x = 6;
+   int y=4;
+   int z =3;
+   
+   x= y +8;
+   if( x<= 4){
+      cout<< "something";
+   }
+   else {
+      cout << "something else";
+   }
+   z*= ( x/4 + y- 8);
+   if( (z < 5)|| (z>=2) && (z !=7) {
+      cout << "something else else";
+   }
+   return 0;
+}
