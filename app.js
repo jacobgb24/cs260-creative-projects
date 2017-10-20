@@ -7,10 +7,11 @@ angular.module('main', ['ngSanitize'])
 			$scope.output = $scope.codeIn;
 			//finds number of spacing issues
 			console.log($scope.output);
-			$scope.numErrorsSpacing = $scope.output.match(
-				new RegExp(/(\S[=+\-*/%<!>]=\S)|(\s[=+\-*/%<!>]=\S)|(\S[=+\-*/%<!>]=\s)|(\S((&&);|(\|\|)|(<<)|(>>))\S)|(\s((&&)|(\|\|)|(<<)|(>>))\S)|(\S((&&)|(\|\|)|(<<)|(>>))\s)|([^\s\-+*%/<!>=][+\-*%/<!>][^\s\-+*%/=])|([^\-+*%/<!>=][+\-*%/<!>=][^\s\-+*%/<!>=])|([^\s\-+*%/<!>=][+\-*%/<!>=][^\-+*%/<!>=])/, 'g')).length;
+			//using ||[] to have length=0 when match is null
+			$scope.numErrorsSpacing = ($scope.output.match(
+				new RegExp(/(\S[=+\-*/%<!>]=\S)|(\s[=+\-*/%<!>]=\S)|(\S[=+\-*/%<!>]=\s)|(\S((&&);|(\|\|)|(<<)|(>>))\S)|(\s((&&)|(\|\|)|(<<)|(>>))\S)|(\S((&&)|(\|\|)|(<<)|(>>))\s)|([^\s\-+*%/<!>=][+\-*%/<!>][^\s\-+*%/=])|([^\-+*%/<!>=][+\-*%/<!>=][^\s\-+*%/<!>=])|([^\s\-+*%/<!>=][+\-*%/<!>=][^\-+*%/<!>=])/, 'g'))||[]).length;
 			//finds number of brace issues
-			$scope.numErrorsBraces = $scope.output.match(new RegExp(/([\n\S]{)|([^\n\s]})/, 'g')).length;
+			$scope.numErrorsBraces = ($scope.output.match(new RegExp(/([\n\S]{)|([^\n\s]})/, 'g'))||[]).length;
 		};
 		$scope.thisIsSafe = function(code) {
 			//highlights spacing errors
