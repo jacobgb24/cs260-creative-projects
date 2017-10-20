@@ -37,8 +37,8 @@
 				<textarea class="form-control" rows="10" id="textarea" name="textarea" ng-model="codeIn" ng-keyup="setOut()"></textarea>
 			</div>
 		</form>
-		<p class="h4 mt-2">Number of spacing errors: {{numErrorsSpacing}}</p>
-		<p class="h4 mb-2">Number of brace errors: {{numErrorsBraces}}</p>
+		<p class="h4 mt-2 ">Number of spacing errors: <span class="highlighted">{{numErrorsSpacing}}</span></p>
+		<p class="h4 mb-2">Number of brace errors: <span class="highlightedBlue">{{numErrorsBraces}}</span></p>
 
 		<div class="container">
 			<pre><code ng-bind-html="thisIsSafe(output)"></code></pre>
