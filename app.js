@@ -25,4 +25,3 @@ angular.module('main', ['ngSanitize'])
 			return $sce.trustAsHtml(code);
 		};
 	}]);
-

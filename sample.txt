@@ -1,8 +1,4 @@
-/* Below is some sample code. Feel free to change it.
- * The code looks for spaces around operators ( + - != << etc.)
- * As well as opening braces not using K&R
- * I'm sure you'll find plenty of bugs.
-*/
+//This is some sample code with 12 spacing errors and two brace errors 
 
 int main()
 {

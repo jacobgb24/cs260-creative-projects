@@ -2,6 +2,7 @@
 <html ng-app="main">
 
 <head>
+	<title>Style Checker</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
@@ -32,11 +33,7 @@
 		<p class="blockquote-footer"> Actually this is more buggy than a plinko submission at 11:58pm, don't trust it</p>
 		<form>
 			<div class="form-group">
-				<label for="inputfield">Type some c++ code below<br>
-					The page looks for missings spaces around operators ( + - != << etc.)<br>
-					As well as opening braces not using K&R<br>
-					For either it will highlight the area and update the errors counts<br>
-					I'm sure you'll find plenty of bugs.</label>
+				<label for="inputfield">Type some c++ code below. The page looks for missings spaces around operators ( + - != << etc.), as well as opening braces not using K&R. For either it will highlight the area and update the errors counts. I'm sure you'll find plenty of bugs. <a href="sample.txt"> Here's some code you can copy and paste to try it out</a></label>
 				<textarea class="form-control" rows="10" id="textarea" name="textarea" ng-model="codeIn" ng-keyup="setOut()"></textarea>
 			</div>
 		</form>
