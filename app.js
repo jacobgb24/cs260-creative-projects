@@ -6,6 +6,7 @@ angular.module('main', ['ngSanitize'])
 		$scope.setOut = function() {
 			$scope.output = $scope.codeIn;
 			//finds number of spacing issues
+			console.log($scope.output);
 			$scope.numErrorsSpacing = $scope.output.match(
 				new RegExp(/(\S[=+\-*/%<!>]=\S)|(\s[=+\-*/%<!>]=\S)|(\S[=+\-*/%<!>]=\s)|(\S((&&);|(\|\|)|(<<)|(>>))\S)|(\s((&&)|(\|\|)|(<<)|(>>))\S)|(\S((&&)|(\|\|)|(<<)|(>>))\s)|([^\s\-+*%/<!>=][+\-*%/<!>][^\s\-+*%/=])|([^\-+*%/<!>=][+\-*%/<!>=][^\s\-+*%/<!>=])|([^\s\-+*%/<!>=][+\-*%/<!>=][^\-+*%/<!>=])/, 'g')).length;
 			//finds number of brace issues

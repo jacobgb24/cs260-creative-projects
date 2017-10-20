@@ -12,7 +12,7 @@
 	</script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-sanitize.js"></script>
-	<script src="app.js?version=60"></script>
+	<script src="app.js?version=66"></script>
 	<style>
 		.highlighted {
 			background: yellow
@@ -29,36 +29,27 @@
 
 		<h1>Check c++ code for spacing issues</h1>
 		<p class="lead">Pefect for the 142 student sick of losing 3 points for one space</p>
-		<p class="blockquote-footer"> Actually this is more buggy than a hotplate, don't trust it</p>
+		<p class="blockquote-footer"> Actually this is more buggy than a plinko submission at 11:58pm, don't trust it</p>
 		<form>
 			<div class="form-group">
-				<label for="inputfield">Place code here</label>
-				<textarea class="form-control" rows="10" id="textarea" name="textarea" ng-model="codeIn" ng-keyup="setOut()">test</textarea>
-				<p class="h4">Number of spacing errors: {{numErrorsSpacing}}</p>
-				<p class="h4">Number of brace errors: {{numErrorsBraces}}</p>
+				<label for="inputfield">Type some c++ code below<br>
+					The page looks for missings spaces around operators ( + - != << etc.)<br>
+					As well as opening braces not using K&R<br>
+					For either it will highlight the area and update the errors counts<br>
+					I'm sure you'll find plenty of bugs.</label>
+				<textarea class="form-control" rows="10" id="textarea" name="textarea" ng-model="codeIn" ng-keyup="setOut()"></textarea>
 			</div>
 		</form>
+		<p class="h4 mt-2">Number of spacing errors: {{numErrorsSpacing}}</p>
+		<p class="h4 mb-2">Number of brace errors: {{numErrorsBraces}}</p>
+
 		<div class="container">
 			<pre><code ng-bind-html="thisIsSafe(output)"></code></pre>
 		</div </div>
 </body>
+
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-<script>
-	$(document).ready(function() {
-		console.log("jq");
-		$.ajax({
-			url: "sample.txt",
-			dataType: "text",
-			success: function(data) {
-				console.log(data);
-				$("#textarea").val(data);
-			}
-		});
-		angular.element('#body').scope().setOut();
-		angular.element('#body').scope().$apply;
-	});
-</script>
 
 </html>
