@@ -36,10 +36,6 @@
 #clipboard_butt {
     float: right;
 }
-#footer_container {
-	margin-top: 7px;
-	margin-bottom: 14px;
-}
 
 body {
     display: flex;
