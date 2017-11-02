@@ -1,0 +1,52 @@
+/* label color */
+
+#url_label {
+    color: #ffffff;
+}
+
+/* label focus color */
+
+#url[type=text]:focus+label {
+    color: #03A9F4;
+}
+
+/* label underline focus color */
+
+#url[type=text]:focus {
+    border-bottom: 1px solid #03A9F4;
+}
+
+#url[type=text].valid {
+    border-bottom: 1px solid #03A9F4;
+}
+
+#url {
+    color: #ffffff;
+}
+
+#list_row {
+    margin-bottom: 0px;
+}
+
+#list_container {
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+#clipboard_butt {
+    float: right;
+}
+#footer_container {
+	margin-top: 7px;
+	margin-bottom: 14px;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
