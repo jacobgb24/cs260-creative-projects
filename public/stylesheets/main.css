@@ -1,0 +1,22 @@
+#input {
+	resize: none;
+	padding: 4px;
+	border: solid 1px lightgray;
+}
+#logo {
+	width: 36px;    
+	padding-right: 8px;
+}
+.mdl-textfield {
+	width: 90%;
+	
+}
+.mdl-textfield__label {
+	padding-left: 4px;
+}
+#headline {
+	padding-top: 8px;
+}
+#pasteBody {
+	padding: 16px;
+}

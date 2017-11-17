@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>PlasterBucket</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-blue.min.css" />
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+	<script src="javascripts/main.js"></script>
+	<link rel="icon" href="/images/icon.png">
+	<link rel="stylesheet" href="stylesheets/main.css?v=2" type="text/css">
+</head>
+
+<body ng-app="plaster" ng-controller="mainCtrl">
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+		<div class="mdl-layout__header">
+			<div class="mdl-layout__header-row">
+				<span class="mdl-layout-title">
+					<img id="logo" src="images/icon.png">
+					PlasterBucket
+				</span>
+				<div class="mdl-layout-spacer"></div>
+				<nav class="mdl-navigation">
+					<a class="mdl-navigation__link" href="https://github.com/jacobgb24/cp5">Github</a>
+				</nav>
+
+			</div>
+		</div>
+		<div class="mdl-typography--text-center">
+			<p id="headline" class="mdl-typography--display-2 "> A poorly design rip-off of pastebin</p>
+			<p class="mdl-typography--headline">Create a title and content, press create, and you'll be redirected to your own plaster's page</p>
+			<form action="#">
+				<div class="mdl-textfield mdl-js-textfield">
+					<input class="mdl-textfield__input" type="text" id="title" ng-model="title">
+					<label class="mdl-textfield__label" for="title">Title</label>
+				</div>
+			</form>
+			<form action="#">
+				<div class="mdl-textfield mdl-js-textfield">
+					<textarea class="mdl-textfield__input" type="text" rows="12" id="input" ng-model="text"></textarea>
+					<label class="mdl-textfield__label" for="input">Put your plaster here...</label>
+				</div>
+			</form>
+
+			<button type="button" ng-click="createPlaster()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Create</button>
+
+		</div>
+	</div>
+	</div>
+</body>
+
+</html>
