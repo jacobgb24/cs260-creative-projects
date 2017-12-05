@@ -2,31 +2,33 @@
 <html ng-app="myApp">
 
 <head>
-    <title>User Login and Sessions</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
+	<title>User Login and Sessions</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
 </head>
 
-<body>
-    <div ng-controller="myController">
-        <h2 id="welcomeText">Welcome. You are Logged In as
-            <%= username %>
-        </h2>
-        <a id="logoutLink" href="/logout">logout</a>
-        <a id="editLink" href="/user">Edit User</a>
-        <p>Place Your Code Here
-            <p>
-    </div>
-    <hr>
-    <span id="indexMsg">
+<body class="container-fluid mt-4">
+	<div ng-controller="myController">
+		<h2 id="welcomeText">Welcome. You are Logged In as:<br> <strong>
+				<%= username %></strong>
+		</h2>
+		<a class="btn btn-outline-danger" id="logoutLink" href="/logout">logout</a>
+		<a class="btn btn-outline-primary" id="editLink" href="/user">Edit User</a>
+	</div>
+	<span class="lead" id="indexMsg">
         <%= msg %>
     </span>
-    <hr>
-    <span id="colorText">
+	<br>
+	<span class="lead" id="colorText">
     Color
         <%= color %>
       </span>
-    <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
-    <script src="/static/js/my_app.js"></script>
+	<script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+	<script src="/static/js/my_app.js"></script>
 </body>
 
 </html>
