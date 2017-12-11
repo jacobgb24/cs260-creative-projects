@@ -2,9 +2,10 @@
 <html ng-app="myApp">
 
 <head>
-	<title>User Login and Sessions</title>
+	<title>MyJournal</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
@@ -13,20 +14,19 @@
 
 <body class="container-fluid mt-4">
 	<div ng-controller="myController">
-		<h2 id="welcomeText">Welcome. You are Logged In as:<br> <strong>
-				<%= username %></strong>
-		</h2>
-		<a class="btn btn-outline-danger" id="logoutLink" href="/logout">logout</a>
-		<a class="btn btn-outline-primary" id="editLink" href="/user">Edit User</a>
+		<h2 id="welcomeText">Welcome <%= username %></h2>
+
+		<a class="btn btn-outline-danger float-right" id="logoutLink" href="/logout">logout</a>
+		<a class="btn btn-outline-primary float-right ml-3 mr-3" id="editLink" href="/user">Manage Entries</a>
 	</div>
-	<span class="lead" id="indexMsg">
-        <%= msg %>
-    </span>
-	<br>
-	<span class="lead" id="colorText">
-    Color
-        <%= color %>
-      </span>
+	<ul class="list-group">
+		<li class="list-group-item lead h2"><strong>Your Journal Entries</strong></li>
+		<% for(var i=0; i< entries.length; i++) { %>
+			<li class="list-group-item d-flex justify-content-between">
+			<%- entries[i].replace(/\r\n/g, '<br>') %>
+			</li>
+			<% } %>
+	</ul>
 	<script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
 	<script src="/static/js/my_app.js"></script>
 </body>

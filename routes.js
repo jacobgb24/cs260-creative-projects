@@ -9,7 +9,7 @@ module.exports = function(app) {
 			res.render('index', {
 				username: req.session.username,
 				msg: req.session.msg,
-				color: req.session.color
+				entries: req.session.entries
 			});
 		} else {
 			req.session.msg = 'Access denied!';
@@ -50,7 +50,7 @@ module.exports = function(app) {
 	});
 	app.post('/signup', users.signup);
 	app.post('/user/update', users.updateUser);
-	app.post('/user/delete', users.deleteUser);
+	app.post('/user/delete', users.deleteEntries);
 	app.post('/login', users.login);
 	app.get('/user/profile', users.getUserProfile);
 };
