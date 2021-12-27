@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>PlasterBucket</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-blue.min.css" />
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	<!-- copy to clipboard -->
+	<script src="https://cdn.rawgit.com/zenorocha/clipboard.js/master/dist/clipboard.min.js"></script>
+	<script src="https://sachinchoolur.github.io/ngclipboard/dist/ngclipboard.min.js"></script>
+
+	<script src="javascripts/paste.js"></script>
+	<link rel="icon" href="/images/icon.png">
+	<link rel="stylesheet" href="stylesheets/main.css?v=2" type="text/css">
+</head>
+
+<body ng-app="paste" ng-controller="mainCtrl">
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+		<div class="mdl-layout__header">
+			<div class="mdl-layout__header-row">
+				<span class="mdl-layout-title">
+					<img id="logo" src="images/icon.png">
+					PlasterBucket
+				</span>
+				<div class="mdl-layout-spacer"></div>
+				<nav class="mdl-navigation">
+					<a class="mdl-navigation__link" href="https://github.com/jacobgb24/cp5">Github</a>
+				</nav>
+			</div>
+		</div>
+		<div id="pasteBody">
+			<div class="mdl-grid">
+				<div class="mdl-cell">
+					<h1 class="mdl-typography--display-3">{{title}}</h1>
+				</div>
+				<div class="mdl-layout-spacer"></div>
+				<div class="mdl-cell--middle mdl-cell--2-col">
+					<button ngclipboard data-clipboard-text="{{fullUrl}}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+						Share Link</button>
+				</div>
+			</div>
+			<hr>
+			<h2 class="mdl-typography--title" ng-bind-html="textHtml"></h2>
+		</div>
+	</div>
+
+</body>
+
+</html>
