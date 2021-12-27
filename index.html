@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="main">
+
+<head>
+	<title>Style Checker</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+	<script>
+		hljs.initHighlightingOnLoad();
+	</script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-sanitize.js"></script>
+	<script src="app.js?version=67"></script>
+	<style>
+		.highlighted {
+			background: yellow
+		}
+
+		.highlightedBlue {
+			background: lightblue
+		}
+	</style>
+</head>
+
+<body id="body" ng-controller="ctrl">
+	<div class="container-fluid mt-3 ml-2 mr-2">
+
+		<h1>Check c++ code for spacing issues</h1>
+		<p class="lead">Pefect for the 142 student sick of losing 3 points for one space</p>
+		<p class="blockquote-footer"> Actually this is more buggy than a plinko submission at 11:58pm, don't trust it</p>
+		<form>
+			<div class="form-group">
+				<label for="inputfield">Type some c++ code below. The page looks for missings spaces around operators ( + - != << etc.), as well as opening braces not using K&R. For either it will highlight the area and update the errors counts. I'm sure you'll find plenty of bugs. <a href="sample.txt"> Here's some code you can copy and paste to try it out</a></label>
+				<textarea class="form-control" rows="10" id="textarea" name="textarea" ng-model="codeIn" ng-keyup="setOut()"></textarea>
+			</div>
+		</form>
+		<p class="h4 mt-2 ">Number of spacing errors: <span class="highlighted">{{numErrorsSpacing}}</span></p>
+		<p class="h4 mb-2">Number of brace errors: <span class="highlightedBlue">{{numErrorsBraces}}</span></p>
+
+		<div class="container">
+			<pre><code ng-bind-html="thisIsSafe(output)"></code></pre>
+		</div </div>
+</body>
+
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+
+</html>
