@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>MyJournal</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+
+</head>
+
+<body class="container-fluid mt-4">
+
+	<p class="h2">Sign Up</p>
+	<form method="POST" action="/signup">
+		<div class="form-group">
+			<label for="username">Username</label>
+			<input type="text" id="username" name="username">
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" id="password" name="password">
+		</div>
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input type="email" id="email" name="email">
+		</div>
+		<input class="btn btn-primary" type="submit" id="register" value="Register">
+	</form>
+	<hr>
+	<span class="lead" id="signupMsg">
+    <%= msg %>
+    </span>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html ng-app="myApp">
+
+<head>
+	<title>MyJournal</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+
+</head>
+
+<body class="container-fluid mt-4">
+	<form method="POST" action="/user/delete">
+		<input class="btn btn-danger float-right mr-3" type="submit" id="delete" value="Delete All Entries">
+	</form>
+	<a class="btn btn-outline-primary float-right mr-3" id="homeLink" href="/">Return Home</a>
+	<div class="form-container" ng-controller="myController">
+		<form method="POST" action="/user/update">
+			<div class="form-group d-flex justify-content-center">
+				<textarea style="height:auto; width:90%" rows="10" placeholder="Write your new entry here..." id="entry" name="entry" ng-model="user.entry"></textarea>
+			</div>
+			<input class="btn btn-primary ml-5" type="submit" id="save" value="Add Entry">
+
+		</form>
+	</div>
+
+
+	<script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+	<script src="/static/js/my_app.js"></script>
+</body>
+
+</html>
