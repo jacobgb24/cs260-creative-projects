@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Launch Companion</title>
+
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+	<link rel="stylesheet" type="text/css" href="main.css?version=4">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<!-- HTML -->
+
+<body style="background-image: url('https://downloops.com/wp-content/uploads/edd/2017/05/Starfield-Stars-Universe-FlyBy-Motion-Background-Video-Loop-Sample3-1.jpg')">
+	<div class="container-fluid mt-4">
+		<div class="row">
+			<div class="col-lg-9">
+				<div class="jumbotron">
+					<div class="row">
+						<div class="col-md-2 col-sm-0">
+							<img class="img-fluid" src="https://i.imgur.com/LuLiAB0.png">
+						</div>
+						<div class="col">
+							<h4 class="text-muted">The next rocket launch is</h4>
+							<h1 class="display-2" id="name">Loading Data...</h1>
+							<p class="lead" id="desc"></p>
+						</div>
+					</div>
+				</div>
+				<div class="card-deck mb-5">
+					<div class="card h-100 mb-2">
+						<div class="card-body">
+							<h2>
+								<span class="span">
+									<i class="material-icons" style="font-size: 36px">schedule</i>
+								</span>
+								<span class="text card-title" id="countdown">Time</span>
+							</h2>
+							<p class="lead card-text" id="launchTime"></p>
+							<p class="lead card-text" id="status"></p>
+							<a href="#" class="btn btn-primary btn-lg float-none mt-1" id="webcastLink">Watch Webcast</a>
+
+						</div>
+					</div>
+					<div class="card h-100 mb-2">
+						<div class="card-body">
+							<h2>
+								<span>
+									<i class="material-icons" style="font-size: 36px">location_on</i>
+								</span>
+								<span class="card-title" id="country">Launch Site</span>
+							</h2>
+							<p class="lead card-text" id="location"></p>
+							<a href="#" class="btn btn-primary" id="locationWiki">More Info</a>
+							<a href="#" class="btn btn-primary" id="locationMap">Google Maps</a>
+						</div>
+					</div>
+					<div class="card h-100 mb-2">
+						<img class="card-img-top" id="rocketImg"></img>
+						<div class="card-body">
+							<h2>
+								<span class="span">
+									<i class="material-icons" style="font-size: 36px">business</i>
+								</span>
+								<span class="text card-title" id="rocketAgency">Company</span>
+							</h2>
+
+							<p class="lead card-text" id="rocketName">Rocket</p>
+							<p class="lead card-text" id="rocketAgency"></p>
+							<a href="#" class="btn btn-primary" id="rocketWiki">Rocket Info</a>
+							<a href="#" class="btn btn-primary" id="agencyWiki">Agency Info</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card">
+					<div class="card-body">
+						<h2 class="card-title">Upcoming Launches</h2>
+					</div>
+					<ul class="list-group list-group-flush">
+						<div id="upcomingLaunches"></div>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+<script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity=""></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity=""></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity=""></script>
+<footer>
+	<div class="container-fluid">
+		<hr>
+		<div class="row">
+			<div class="col">
+				<a href="https://launchlibrary.net/">Information from LaunchLibrary.net</a>
+			</div>
+			<div class="col">
+				<a href="https://github.com/jacobgb24/cp-2">
+					<p class="text-right">Source Code for page</p>
+				</a>
+			</div>
+		</div>
+	</div>
+</footer>
+
+</html>
+
+<!-- JAVASCRIPT -->
+<script>
+	var myurl = "https://launchlibrary.net/1.2/launch/next/13";
+	console.log(myurl);
+	$.get(myurl, function(data, status) {
+		if (status.toString().indexOf("4") != -1)
+			alert("Error loading data");
+		var mission = data.launches[0].name;
+		var launchTime = new Date(data.launches[0].net);
+		$("#name").text(mission.substring(mission.indexOf("|") + 1, mission.length));
+		$("#desc").text(data.launches[0].missions[0].description);
+		$("#webcastLink").attr('href', data.launches[0].vidURLs[0]);
+		$("#launchTime").text("NET: " + launchTime.toLocaleDateString("en-US", {
+			month: 'short',
+			day: 'numeric',
+			year: 'numeric',
+			hour: 'numeric',
+			minute: 'numeric'
+		}));
+		var stat = data.launches[0].status;
+		if (stat == 1)
+			var statusStr = "Go";
+		if (stat == 2)
+			var statusStr = "Hold";
+		$("#status").text("Status: " + statusStr);
+		setCountdown(launchTime);
+		$("#country").text(data.launches[0].location.countryCode);
+		$("#location").text(data.launches[0].location.pads[0].name);
+		$("#locationWiki").attr('href', data.launches[0].location.pads[0].wikiURL);
+		$("#locationMap").attr('href', data.launches[0].location.pads[0].mapURL);
+		$("#rocketImg").attr("src", data.launches[0].rocket.imageURL);
+		$("#rocketName").text( data.launches[0].rocket.name);
+		$("#rocketAgency").text(data.launches[0].rocket.agencies[0].name);
+		$("#rocketWiki").attr('href', data.launches[0].rocket.wikiURL);
+		$("#agencyWiki").text(data.launches[0].rocket.agencies[0].abbrev + " Site");
+		$("#agencyWiki").attr('href', data.launches[0].rocket.agencies[0].infoURL);
+		for (var i = 1; i < data.launches.length; i++) {
+			var name = data.launches[i].name;
+			$("<li>").addClass("list-group-item").text(name.substring(name.indexOf("|") + 1, name.length)).appendTo($("#upcomingLaunches"));
+		}
+	}, "json");
+
+	function setCountdown(launchTime) {
+		var repeat = setInterval(function() {
+			var now = new Date();
+			var timeTo = launchTime - now;
+			var daysTo = Math.floor(timeTo / (1000 * 60 * 60 * 24));
+			var hourTo = Math.floor((timeTo % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minTo = Math.floor((timeTo % (1000 * 60 * 60)) / (1000 * 60));
+			var secTo = Math.floor((timeTo % (1000 * 60)) / 1000);
+			$("#countdown").text("T-" + daysTo + ":" + hourTo + ":" + minTo + ":" + secTo);
+
+		}, 1000);
+	}
+</script>
